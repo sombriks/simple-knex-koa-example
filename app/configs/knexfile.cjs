@@ -30,7 +30,7 @@ module.exports = {
   },
   production: {
     ..._cfg,
-    client: 'postgresql',
+    client: 'pg',
     connection: process.env.PG_CONNECTION_URL
   }
 }
