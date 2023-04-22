@@ -1,4 +1,3 @@
-
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
@@ -14,8 +13,15 @@ export const up = async (knex) => {
       tb.increments()
       tb.string("title").notNullable()
       tb.string("isbn").unique().notNullable()
-      tb.integer("authors_id").notNullable()
+      tb.integer("authors_id").unsigned().notNullable()
         .references("authors.id").onDelete("cascade")
+      tb.timestamps(true, true)
+    })
+    .createTable("users", (tb) => {
+      tb.increments()
+      tb.string("name").notNullable()
+      tb.string("email").unique().notNullable()
+      tb.string("password").notNullable()
       tb.timestamps(true, true)
     })
 };
@@ -26,6 +32,7 @@ export const up = async (knex) => {
  */
 export const down = async (knex) => {
   return knex.schema
+    .dropTable("users")
     .dropTable("books")
     .dropTable("authors")
 };

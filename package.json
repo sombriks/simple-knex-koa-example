@@ -5,9 +5,9 @@
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "start": "node -r dotenv-flow/config index.mjs",
+    "start": "cross-env NODE_ENV=production node -r dotenv-flow/config index.mjs",
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv-flow/config ",
-    "test": "cross-env NODE_ENV=test mocha -r dotenv-flow/config app/**/*.spec.mjs",
+    "test": "cross-env NODE_ENV=test mocha -r dotenv-flow/config -r app/configs/_testhooks.mjs app/**/*.spec.mjs",
     "test:coverage": "c8 npm run test",
     "migrate:make": "knex migrate:make --knexfile app/configs/knexfile.cjs -x mjs -- ",
     "migrate:latest": "knex migrate:latest --knexfile app/configs/knexfile.cjs",
@@ -17,14 +17,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv-flow": "^3.2.0",
-    "cross-env": "^7.0.3",
-    "knex": "^2.4.2",
-    "pg": "^8.9.0",
-    "koa": "^2.14.1",
     "@koa/router": "^12.0.0",
+    "better-sqlite3": "^8.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv-flow": "^3.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.4.2",
+    "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
-    "better-sqlite3": "^8.1.0"
+    "pg": "^8.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

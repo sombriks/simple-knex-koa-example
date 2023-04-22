@@ -1,15 +1,16 @@
 import chai from "chai"
 
 import { listBooks } from "./services.mjs"
-import { knex, doMigrate } from "../../configs/database.mjs";
+import { knex, dbMigrate } from "../../configs/database.mjs";
 
 chai.should();
 
 describe("Books service test", () => {
 
-  // setup database for testing
-  before(async () => await doMigrate())
-  after(async () => await knex.destroy())
+  // see global hooks
+  // // setup database for testing
+  // before(async () => await dbMigrate())
+  // after(async () => await knex.destroy())
 
   it("should list all books", async () => {
     const books = await listBooks("")
