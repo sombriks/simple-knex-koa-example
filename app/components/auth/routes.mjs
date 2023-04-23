@@ -1,7 +1,7 @@
 import Router from "@koa/router"
 
 import {sign} from "./encryption.mjs";
-import {novoUsuario, login} from "./services.mjs"
+import {signUp, login} from "./services.mjs"
 
 export const authRouter = new Router()
 
@@ -14,7 +14,7 @@ authRouter.post("/login", async ctx => {
 })
 
 authRouter.post("/signup", async ctx => { // TODO captcha protection
-  const {nome, email, senha} = ctx.request.body
-  const id = await novoUsuario({name, email, password})
-  ctx.body = {id, name, email}
+  const {name, email, password} = ctx.request.body
+  const id = await signUp({name, email, password})
+  ctx.body = sign({id, name, email})
 })

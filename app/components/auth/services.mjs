@@ -7,7 +7,7 @@ export const login = async (email, pwd) => {
   return await user
 }
 
-export const novoUsuario = async ({name, email, password}) => {
+export const signUp = async ({name, email, password}) => {
   const pwd = encrypt(password)
   const [usuario_id] = await knex("users").insert({name, email, password: pwd})
   return usuario_id

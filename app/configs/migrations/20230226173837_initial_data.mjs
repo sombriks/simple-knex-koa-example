@@ -4,6 +4,12 @@
  * @returns { Promise<void> }
  */
 export const up = async (knex) => {
+  await knex("users").insert({
+    id:1,
+    name:"adm",
+    email:"test@test.com",
+    password:"6b6e6f776e20696e697469616c697a61@09ef83851dbb53c8eb7d47634bcb08ec"
+  })
   await knex("authors").insert([
     { id: 1, name: "Willian Gibson" },
     { id: 2, name: "Phillip K. Dick" }
@@ -21,5 +27,6 @@ export const up = async (knex) => {
  */
 export const down = async (knex) => {
   await knex("books").del()
-  return await knex("authors").del()
+  await knex("authors").del()
+  return knex("users").del()
 };
