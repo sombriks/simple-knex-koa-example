@@ -4,6 +4,7 @@ import bodyParser from "koa-bodyparser";
 
 import { bookRouter } from "./components/books/routes.mjs"
 import { authRouter } from "./components/auth/routes.mjs"
+import {authorRouter} from "./components/authors/routes.mjs";
 
 export const app = new Koa()
 
@@ -18,6 +19,9 @@ app
 
   .use(authRouter.routes())
   .use(authRouter.allowedMethods())
+
+  .use(authorRouter.routes())
+  .use(authorRouter.allowedMethods())
 
   .use(bookRouter.routes())
   .use(bookRouter.allowedMethods())

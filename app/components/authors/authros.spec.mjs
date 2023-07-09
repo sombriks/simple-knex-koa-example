@@ -1,7 +1,7 @@
 import chai, {expect} from "chai"
 import chaiHttp from "chai-http"
 import {app} from "../../main.mjs";
-import {verify} from "../../configs/encryption.mjs";
+import {sign, verify} from "../../configs/encryption.mjs";
 
 chai.should();
 chai.use(chaiHttp);
@@ -20,17 +20,71 @@ describe("Authors service test", () => {
     done();
   })
 
-  it("Shpuild save a new Author", done => {
+  it("Should list authors", done => {
+    chai
+      .request(app.callback())
+      .get("/authors")
+      .end((err, res) => {
+        if (err) return done(err);
+        res.should.have.status(200);
+        res.body.should.be.an("array")
+        done();
+      });
+  })
+
+  it("Should save a new Author", done => {
+    const testUser = {
+      email: "test@test.com"
+    }
+    const {token} = sign(testUser)
+
     const newAuthor = {
       name: "Neil Gaiman",
     }
     chai
       .request(app.callback())
       .post("/authors")
+      .set("Authorization", `Bearer ${token}`)
       .send(newAuthor)
       .end((err, res) => {
         if (err) return done(err);
         res.should.have.status(200);
+        res.body.should.be.an("array")
+        done();
+      });
+  })
+
+  it("Should NOT save a new Author invalid token", done => {
+    const token = "gibberish"
+    const newAuthor = {
+      name: "Neil Gaiman",
+    }
+    chai
+      .request
+      (app.callback())
+      .post("/authors")
+      .set("Authorization", `Bearer ${token}`)
+      .send(newAuthor)
+      .end((err, res) => {
+        if (err) return done(err);
+        res.should.have.status(500);
+        res.body.should.be.an("object")
+        done();
+      });
+  })
+
+  it("Should NOT save a new Author missing token", done => {
+    const newAuthor = {
+      name: "Neil Gaiman",
+    }
+    chai
+      .request
+      (app.callback())
+      .post("/authors")
+      .send(newAuthor)
+      .end((err, res) => {
+        if (err) return done(err);
+        res.should.have.status(401);
         res.body.should.be.an("object")
         done();
       });

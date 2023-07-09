@@ -28,6 +28,5 @@ export const sign = payload => {
   return {token: jwt.sign(payload, process.env.SECRET)}
 }
 
-export const verify = token => {
-  return jwt.verify(token?.token || token, process.env.SECRET)
-}
+export const verify = token =>
+  jwt.verify(token?.token || token, process.env.SECRET)
