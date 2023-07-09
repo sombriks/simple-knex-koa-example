@@ -1,6 +1,7 @@
 version: "3.5"
 #
 # file to sample how to tear up the needed infra to run this application.
+# run with docker-compose up -d
 #
 services:
   knex-koa-app:
