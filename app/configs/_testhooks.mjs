@@ -5,10 +5,10 @@ import {dbMigrate, knex} from "./database.mjs";
  * teardown after all tests are done https://mochajs.org/#root-hook-plugins
  */
 export const mochaHooks = {
-  async beforeAll() {
-    await dbMigrate()
-  },
-  async afterAll() {
-    await knex.destroy()
-  }
+    async beforeAll() {
+        await dbMigrate()
+    },
+    async afterAll() {
+        await knex.destroy()
+    }
 }

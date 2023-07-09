@@ -1,7 +1,7 @@
 import chai, {expect} from "chai"
 import chaiHttp from "chai-http"
 import {app} from "../../main.mjs";
-import {verify, encrypt, decrypt} from "./encryption.mjs";
+import {verify, encrypt, decrypt} from "../../configs/encryption.mjs";
 
 chai.should();
 chai.use(chaiHttp);
