@@ -40,6 +40,21 @@ describe("Auth service test", () => {
       });
   })
 
+  it("Should NOT login", done => {
+    const testUser = {
+      email: "test@test.com", password: "nope"
+    }
+    chai
+      .request(app.callback())
+      .post("/login")
+      .send(testUser)
+      .end((err, res) => {
+        if (err) return done(err);
+        res.should.have.status(404);
+        done();
+      });
+  })
+
   it("should create account", done => {
     const testUser = {
       name: "user 1", email: "test1@test.com", password: "e1e2e3e4"
@@ -52,7 +67,7 @@ describe("Auth service test", () => {
         if (err) return done(err);
         res.should.have.status(200);
         res.body.should.be.an("object")
-        const data = verify(res.body)
+        const data = verify(res.body.token)
         expect(data).to.be.ok
         data.email.should.be.eq(testUser.email)
         expect(data.password).to.be.undefined

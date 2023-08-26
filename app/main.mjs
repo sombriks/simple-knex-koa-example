@@ -1,27 +1,29 @@
 import Koa from "koa";
-import Router from "@koa/router";
+import ApiBuilder from "koa-api-builder";
 import bodyParser from "koa-bodyparser";
 
-import { bookRouter } from "./components/books/routes.mjs"
-import { authRouter } from "./components/auth/routes.mjs"
-import {authorRouter} from "./components/authors/routes.mjs";
+import {insertBookRequest, listBooksRequest} from "./components/books/requests.mjs"
+import {loginRequest, signupRequest} from "./components/auth/requests.mjs"
+import {insertAuthorRequest, listAuthorsRequest} from "./components/authors/requests.mjs";
+import {isAuthenticated} from "./configs/middleware.mjs";
 
-export const app = new Koa()
+export const app = new Koa();
 
-const statusRouter = new Router()
-statusRouter.get("/status", async ctx => ctx.body = "ONLINE")
+const router = ApiBuilder().path(b => {
+  b.get("/status", async ctx => ctx.body = "ONLINE");
+  b.post("/login", loginRequest);
+  b.post("/signup", signupRequest);
+  b.path("/authors", b => {
+    b.get(listAuthorsRequest);
+    b.post(isAuthenticated, insertAuthorRequest);
+  })
+  b.path("/books", b => {
+    b.get(listBooksRequest);
+    b.post(isAuthenticated, insertBookRequest);
+  });
+}).build();
 
 app
   .use(bodyParser())
-
-  .use(statusRouter.routes())
-  .use(statusRouter.allowedMethods())
-
-  .use(authRouter.routes())
-  .use(authRouter.allowedMethods())
-
-  .use(authorRouter.routes())
-  .use(authorRouter.allowedMethods())
-
-  .use(bookRouter.routes())
-  .use(bookRouter.allowedMethods())
+  .use(router.routes())
+  .use(router.allowedMethods())

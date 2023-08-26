@@ -3,6 +3,11 @@
 source code for [this blog post](https://sombriks.com/blog/0043-knex-still-rocks-on-modern-node/)
 and for [this one too](https://sombriks.com/blog/0055-containers-part-3-app-container-friendly/)
 
+## This is a project template
+
+If starting a backend node project with [koa](https://koajs.com), consider
+either use this template directly or just grab some inspiration.
+
 ## knex rocks!
 
 knex will help you to build your queries and that's it, no ORM, M-N relations,

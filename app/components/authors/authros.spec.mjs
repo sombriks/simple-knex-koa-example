@@ -60,8 +60,7 @@ describe("Authors service test", () => {
       name: "Neil Gaiman",
     }
     chai
-      .request
-      (app.callback())
+      .request(app.callback())
       .post("/authors")
       .set("Authorization", `Bearer ${token}`)
       .send(newAuthor)
@@ -78,8 +77,7 @@ describe("Authors service test", () => {
       name: "Neil Gaiman",
     }
     chai
-      .request
-      (app.callback())
+      .request(app.callback())
       .post("/authors")
       .send(newAuthor)
       .end((err, res) => {
