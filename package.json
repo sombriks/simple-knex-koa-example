@@ -5,10 +5,12 @@
   "description": "simple service sampling how to build things with koa and knex",
   "main": "index.mjs",
   "scripts": {
+    "postinstall": "echo 'npm run lint > .git/hooks/pre-commit' ",
     "start": "cross-env NODE_ENV=production node -r dotenv-flow/config index.mjs",
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv-flow/config ",
     "test": "cross-env NODE_ENV=test mocha -r dotenv-flow/config -r app/configs/_testhooks.mjs app/**/*.spec.mjs",
     "test:coverage": "c8 npm run test",
+    "lint": "eslint --fix \"app/**\"",
     "migrate:make": "knex migrate:make --knexfile app/configs/knexfile.cjs -x mjs -- ",
     "migrate:latest": "knex migrate:latest --knexfile app/configs/knexfile.cjs",
     "migrate:rollback": "knex migrate:rollback --knexfile app/configs/knexfile.cjs"
@@ -32,6 +34,11 @@
     "c8": "^7.13.0",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.20"
   },

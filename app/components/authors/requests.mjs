@@ -1,4 +1,4 @@
-import {insertAuthor, listAuthors} from "./services.mjs";
+import { insertAuthor, listAuthors } from './services.mjs'
 
 export const listAuthorsRequest = async ctx =>
   ctx.body = await listAuthors(ctx.request.query.q)

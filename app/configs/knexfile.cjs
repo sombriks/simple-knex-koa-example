@@ -1,3 +1,4 @@
+const path = require('path')
 /**
 * @type { Object.<string, import("knex").Knex.Config> }
 */
@@ -5,16 +6,16 @@ const _cfg = {
   client: 'better-sqlite3',
   useNullAsDefault: true,
   connection: {
-    filename: `${__dirname}/../../db.sqlite3`,
+    filename: path.join(__dirname, '../../db.sqlite3')
   },
   pool: {
     min: 2,
     max: 10
   },
   migrations: {
-    directory: `${__dirname}/migrations`,
-    loadExtensions: [".mjs"],
-  },
+    directory: path.join(__dirname, 'migrations'),
+    loadExtensions: ['.mjs']
+  }
 }
 
 /**
