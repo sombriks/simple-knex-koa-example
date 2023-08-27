@@ -1,7 +1,7 @@
-import chai, { expect } from 'chai'
+import chai from 'chai'
 import chaiHttp from 'chai-http'
 import { app } from '../../main.mjs'
-import { sign, verify } from '../../configs/encryption.mjs'
+import { sign } from '../../configs/encryption.mjs'
 
 chai.should()
 chai.use(chaiHttp)

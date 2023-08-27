@@ -32,7 +32,7 @@ describe('Auth service test', () => {
         res.should.have.status(200)
         res.body.should.be.an('object')
         const data = verify(res.body)
-        expect(data).to.be.ok
+        data.should.be.ok
         data.email.should.be.eq(testUser.email)
         expect(data.password).to.be.undefined
         done()

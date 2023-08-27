@@ -32,7 +32,7 @@ describe('Books service test', () => {
   })
 
   it('should insert a book', async () => {
-    const book = await insertBook({
+    await insertBook({
       title: 'Mona Lisa Overdrive',
       isbn: '9783608504866',
       authors_id: 2
