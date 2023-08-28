@@ -1,6 +1,7 @@
 # [simple knex koa example](https://github.com/sombriks/simple-knex-koa-example)
 
 ![tests](https://github.com/sombriks/simple-knex-koa-example/actions/workflows/node.js.yml/badge.svg)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/sombriks/simple-knex-koa-example?logo=docker&color=lightblue)
 
 source code for [this blog post](https://sombriks.com/blog/0043-knex-still-rocks-on-modern-node/)
 and for [this one too](https://sombriks.com/blog/0055-containers-part-3-app-container-friendly/)

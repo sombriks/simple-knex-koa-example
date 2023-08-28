@@ -24,6 +24,7 @@ jobs:
       - name: Run Node.js tests before build the image
         uses: actions/setup-node@v3
         with:
+          node-version: '16.x'
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
@@ -39,7 +40,8 @@ jobs:
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ env.DOCKER_PASSWORD }}
 
-      # This step is tailored specifically for docker hub, see the action docs for other registries
+      # This step is tailored specifically for docker hub,
+      # see the action docs for other registries
       - name: Build and publish image on Docker hub
         uses: docker/build-push-action@v4
         with:
