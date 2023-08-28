@@ -6,7 +6,7 @@ on:
       - '*'
 
 env:
-  DOCKER_REGISTRY: registry.hub.docker.com
+#  DOCKER_REGISTRY: registry.hub.docker.com
   SERVICE_NAME: ${{ github.event.repository.name }}
   DOCKERFILE: ./Dockerfile
   GIT_TAG: ${{ github.ref_name }}
@@ -35,7 +35,7 @@ jobs:
       - name: Log in into Docker Hub
         uses: docker/login-action@v2.2.0
         with:
-          registry: ${{ env.DOCKER_REGISTRY }}
+#          registry: ${{ env.DOCKER_REGISTRY }}
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ env.DOCKER_PASSWORD }}
 
