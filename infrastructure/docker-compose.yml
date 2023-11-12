@@ -7,8 +7,9 @@ services:
   knex-koa-app:
     # build: .
     # uncomment the line above and comment the one bellow to build the image
-    image: sombriks/simple-knex-koa
+    image: sombriks/simple-knex-koa:${TAG:-development}
     environment:
+      NODE_ENV: ${NODE_ENV:-production}
       PG_CONNECTION_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db/${POSTGRES_DB:-books}
     ports:
       - "3000:3000"
@@ -17,8 +18,8 @@ services:
     healthcheck:
       # Almost perfect
       test: [ "CMD", "wget", "-S", "--spider", "http://127.0.0.1:3000/status" ]
-      interval: 30s
-      timeout: 30s
+      interval: 5s
+      timeout: 10s
       retries: 30
     restart: on-failure
     depends_on:

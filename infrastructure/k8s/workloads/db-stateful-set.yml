@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-stateful-set
+  labels:
+    app: db
+spec:
+  serviceName: db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          image: postgres:15-alpine
+          env:
+            - name: POSTGRES_DB
+              value: "books"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+          ports:
+            - containerPort: 5432

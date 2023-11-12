@@ -8,7 +8,7 @@ on:
 env:
 #  DOCKER_REGISTRY: registry.hub.docker.com
   SERVICE_NAME: ${{ github.event.repository.name }}
-  DOCKERFILE: ./Dockerfile
+  DOCKERFILE: ./infrastructure/Dockerfile
   GIT_TAG: ${{ github.ref_name }}
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

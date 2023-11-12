@@ -16,7 +16,7 @@ LABEL name=simple-knex-koa-example \
       description="small koa.js service consuming database using knex.js"
 
 # files needed to proper build and run this.
-ADD index.mjs package.json .env.production /app/
+ADD index.mjs package.json .env.* /app/
 
 # mind the trailing '/' in app/, it's important!
 ADD app/ /app/app/

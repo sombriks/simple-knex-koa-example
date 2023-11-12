@@ -1,11 +1,11 @@
 {
   "name": "simple-knex-koa-example",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.2",
   "description": "simple service sampling how to build things with koa and knex",
   "main": "index.mjs",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node -r dotenv-flow/config index.mjs",
+    "start": "node -r dotenv-flow/config index.mjs",
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv-flow/config ",
     "lint": "eslint --fix \"app/**\"",
     "pretest": "npm run lint",
