@@ -81,16 +81,25 @@ offer support for a blog post. Eventually other articles came.
 
 ### [knex rocks](https://sombriks.com/blog/0043-knex-still-rocks-on-modern-node/)
 
-knex will help you to build your queries and that's it, no ORM, M-N relations,
+Knex will help you to build your queries and that's it, no ORM, M-N relations,
 nothing. it does only one thing and does it well.
 
 ### [containers, images, registries and so on](https://sombriks.com/blog/0055-containers-part-3-app-container-friendly/)
 
-at some point container images became the de-facto standard for application
+At some point container images became the de-facto standard for application
 publishing and there is no way back from there.
 
 but this is not a bad thing, once you figure out that good practices still
 mostly the same.
+
+### [Testing kubernetes configurations with kind](https://sombriks.com/blog/0058-containers-part-4-k8s-with-kind/)
+
+Kubernetes is how people put things in production nowadays and sometimes
+it can be tricky to test because it's heavy.
+
+By using kind as kubernetes runtime part of this issue is solved and the
+developer can be more confident on how the application will behave inside
+the belly of the beast.
 
 ## References
 
