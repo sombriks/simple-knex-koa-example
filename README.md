@@ -48,7 +48,7 @@ Create an image:
 
 ```bash
 docker build -f infrastructure/Dockerfile \
-  -t sombriks/simple-knex-koa:development .
+  -t sombriks/simple-knex-koa-example:development .
 ```
 
 Then spin up a container:
@@ -57,7 +57,7 @@ Then spin up a container:
 docker run -it \
   -e NODE_ENV=development \
   -e PORT=3000 \
-  -p 3000:3000 sombriks/simple-knex-koa:development
+  -p 3000:3000 sombriks/simple-knex-koa-example:development
 ```
 
 ### Docker compose
