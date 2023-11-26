@@ -7,7 +7,7 @@ services:
   knex-koa-app:
     # build: .
     # uncomment the line above and comment the one bellow to build the image
-    image: sombriks/simple-knex-koa:${TAG:-development}
+    image: sombriks/simple-knex-koa-example:${TAG:-development}
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       PG_CONNECTION_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db/${POSTGRES_DB:-books}
