@@ -4,9 +4,14 @@ metadata:
   name: app-route
 spec:
   parentRefs:
-  # see gateway name inside cluster
-  - name: local-gw
+    # see gateway name inside cluster
+    - name: local-gw
   rules:
-  - backendRefs:
-    - name: simple-knex-koa-service
-      port: 3000
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /books
+      backendRefs:
+        - name: simple-knex-koa-service
+          port: 3000
+          
