@@ -26,3 +26,7 @@ spec:
               value: "postgres://postgres:postgres@db-service:5432/books"
           ports:
             - containerPort: 3000
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "1"

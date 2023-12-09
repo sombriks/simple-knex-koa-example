@@ -5,7 +5,8 @@ metadata:
 spec:
 # if service has type: NodePort you can specify a public port, so it's visible
 # outside the cluster. However, that port must be inside the 30000-32767 range
-# and your k8s cluster must provide public ip's which isn't the case for kind
+# and your k8s cluster must provide public ip's which isn't the case for kind or
+# k0s kubernetes implementations
 #  type: NodePort
   selector:
     app: simple-knex-koa
