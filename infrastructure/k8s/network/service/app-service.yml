@@ -15,10 +15,10 @@ spec:
       port: 3000
 #      nodePort: 30000
       targetPort: 3000
-      name: simple-knex-koa-tcp-port
+      name: tcp-port
     - protocol: UDP
       port: 3000
 #      nodePort: 30000
       targetPort: 3000
-      name: simple-knex-koa-udp-port
+      name: udp-port
 
