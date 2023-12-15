@@ -1,9 +1,8 @@
 name: Publish git tag as Docker image
 
 on:
-  create:
-    tags:
-      - '*'
+  push: 
+    tags: ['*'] 
 
 env:
 #  DOCKER_REGISTRY: registry.hub.docker.com
