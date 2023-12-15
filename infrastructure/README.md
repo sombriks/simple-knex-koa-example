@@ -31,13 +31,13 @@ For instance, previous strategy was:
 
 - git commit everything locally
 - run npm version patch (or minor)
-- git push origin <branch>
-- git push origin <tag>
+- git push origin _branch_
+- git push origin _tag_
 
 Then an action would create a docker image from the tag and life goes on.
 
-Now i want Continuous Deployment, so i decided that every commit on main branch
-will create an image, publish it and also update the manifest files under
+Now i want Continuous Deployment, so i decided that every commit on **main**
+branch will create an image, publish it and also update the manifest files under
 infrastructure folder to point to the new image, so i can configure some
 pull-based tool inside a kubernetes cluster to observe the desired state and
 apply it.

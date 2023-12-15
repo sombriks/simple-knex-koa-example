@@ -1,0 +1,12 @@
+name: Deploy new version
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run-test:
+    uses: ./.github/workflows/_base.yml
+    secrets: inherit
+    with:
+      PUBLISH: true
