@@ -1,7 +1,10 @@
 # The IaC folder
 
-Whenever we already have a deployment strategy it's almost sure there is a bunch
-of scripts used just for that purpose. Bash scripts, automation tools and so on.
+It's code, but infrastructure.
+
+- How to package ([Dockerfile](Dockerfile))
+- How to orchestrate locally ([docker-compose.yml](docker-compose.yml))
+- How to define desired state for detailed infrastructure (k8s folder)
 
 ## It should be into another repo
 
