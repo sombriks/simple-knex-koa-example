@@ -24,7 +24,7 @@ jobs:
       - name: Run Node.js tests before build the image
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
@@ -50,6 +50,6 @@ jobs:
         with:
           context: .
           file: ${{ env.DOCKERFILE }}
-          tags: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:${{ env.GIT_TAG }}
+          tags: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:${{ env.GIT_TAG }},${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
           platforms: linux/amd64,linux/arm64
           push: true

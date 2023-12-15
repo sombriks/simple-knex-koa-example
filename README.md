@@ -13,7 +13,7 @@ either use this template directly or just grab some inspiration.
 
 ## Requirements
 
-- node 16
+- node 18
 
 If you plan to run in production mode
 
@@ -68,6 +68,7 @@ Create the image as shown in the previous section, then spin up
 ```bash
 NODE_ENV=development docker compose -f infrastructure/docker-compose.yml up
 ```
+
 In all examples above, the app will start in `development mode`.
 
 ### Kubernetes (using kind)
@@ -110,4 +111,3 @@ the belly of the beast.
 - [koa](https://koajs.com)
 - [docker](https://docker.com)
 - [kind](https://kind.sigs.k8s.io/)
-
