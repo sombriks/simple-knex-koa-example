@@ -13,7 +13,7 @@ either use this template directly or just grab some inspiration.
 
 ## Requirements
 
-- node 16
+- node 18
 
 If you plan to run in production mode
 
@@ -68,9 +68,10 @@ Create the image as shown in the previous section, then spin up
 ```bash
 NODE_ENV=development docker compose -f infrastructure/docker-compose.yml up
 ```
+
 In all examples above, the app will start in `development mode`.
 
-### Kubernetes (using kind)
+### Kubernetes
 
 See the details [here](infrastructure/README.md).
 
@@ -97,7 +98,7 @@ mostly the same.
 Kubernetes is how people put things in production nowadays and sometimes
 it can be tricky to test because it's heavy.
 
-By using kind as kubernetes runtime part of this issue is solved and the
+By using kind as kubernetes runtime, part of this issue is solved and the
 developer can be more confident on how the application will behave inside
 the belly of the beast.
 
@@ -110,4 +111,3 @@ the belly of the beast.
 - [koa](https://koajs.com)
 - [docker](https://docker.com)
 - [kind](https://kind.sigs.k8s.io/)
-
