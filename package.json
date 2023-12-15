@@ -1,7 +1,7 @@
 {
   "name": "simple-knex-koa-example",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "simple service sampling how to build things with koa and knex",
   "main": "index.mjs",
   "scripts": {
@@ -20,7 +20,6 @@
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^12.0.0",
-    "better-sqlite3": "^8.1.0",
     "cross-env": "^7.0.3",
     "dotenv-flow": "^3.2.0",
     "jsonwebtoken": "^9.0.0",
@@ -28,7 +27,9 @@
     "koa": "^2.14.1",
     "koa-api-builder": "^0.2.4",
     "koa-bodyparser": "^4.3.0",
-    "pg": "^8.9.0"
+    "koa-logger": "^3.2.1",
+    "pg": "^8.9.0",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "c8": "^7.13.0",

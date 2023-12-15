@@ -1,4 +1,5 @@
 import Koa from 'koa'
+import logger from 'koa-logger'
 import ApiBuilder from 'koa-api-builder'
 import bodyParser from 'koa-bodyparser'
 
@@ -24,6 +25,7 @@ const router = ApiBuilder().path(b => {
 }).build()
 
 app
+  .use(logger())
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods())

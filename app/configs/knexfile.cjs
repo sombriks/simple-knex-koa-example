@@ -3,7 +3,7 @@ const path = require('path')
 * @type { Object.<string, import("knex").Knex.Config> }
 */
 const _cfg = {
-  client: 'better-sqlite3',
+  client: 'sqlite3',
   useNullAsDefault: true,
   connection: {
     filename: path.join(__dirname, '../../db.sqlite3')
