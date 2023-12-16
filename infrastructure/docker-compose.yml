@@ -1,23 +1,21 @@
-version: "3.5"
-#
-# file to sample how to tear up the needed infra to run this application.
-# run with docker-compose up -d
-#
+version: '3.5'
 services:
   knex-koa-app:
-    # build: .
-    # uncomment the line above and comment the one bellow to build the image
-    image: sombriks/simple-knex-koa-example:${TAG:-development}
+    image: sombriks/simple-knex-koa-example:v0.11.0-ee4e144
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       PG_CONNECTION_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db/${POSTGRES_DB:-books}
     ports:
-      - "3000:3000"
+      - '3000:3000'
     expose:
       - 3000
     healthcheck:
-      # Almost perfect
-      test: [ "CMD", "wget", "-S", "--spider", "http://127.0.0.1:3000/status" ]
+      test:
+        - CMD
+        - wget
+        - '-S'
+        - '--spider'
+        - http://127.0.0.1:3000/status
       interval: 5s
       timeout: 10s
       retries: 30
@@ -25,7 +23,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-  # https://hub.docker.com/_/postgres
   db:
     image: postgres:15-alpine
     environment:
@@ -33,12 +30,13 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
     ports:
-      - "5432:5432"
+      - '5432:5432'
     expose:
       - 5432
     healthcheck:
-      # https://www.postgresql.org/docs/9.4/app-pg-isready.html
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test:
+        - CMD-SHELL
+        - pg_isready
       interval: 30s
       timeout: 30s
       retries: 30
