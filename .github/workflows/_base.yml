@@ -15,14 +15,6 @@ on:
         type: string
         required: false
         default: registry.hub.docker.com
-      # DOCKER_USERNAME:
-      #   type: string
-      #   required: false
-      #   default: ${{ secrets.DOCKER_USERNAME }}
-      # DOCKER_PASSWORD:
-      #   type: string
-      #   required: false
-      #   default: ${{ secrets.DOCKER_PASSWORD }}
       DOCKERFILE:
         type: string
         required: false
@@ -34,9 +26,18 @@ on:
       TAG:
         type: string
         required: false
-        default: ${{github.ref}}-${{github.sha}}
+        default: ${{github.ref_name}}
   
 jobs:
+  prepare-git-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - id: sha-step
+        name: cuts commit hash
+        run: echo "hash=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+    outputs:
+      git-tag: ${{inputs.TAG}}-${{steps.sha-step.outputs.hash}}
+
   run-tests:
     runs-on: ubuntu-latest
 
@@ -64,7 +65,7 @@ jobs:
   publish-image:
     if: ${{inputs.PUBLISH == true}}
     runs-on: ubuntu-latest
-    needs: [run-tests]
+    needs: [run-tests, prepare-git-tag]
 
     steps:
     - name: Checkout
@@ -93,7 +94,7 @@ jobs:
         file: ${{ inputs.DOCKERFILE }}
         platforms: linux/amd64,linux/arm64
         tags: | 
-          ${{ secrets.DOCKER_USERNAME }}/${{ inputs.SERVICE_NAME }}:${{ inputs.TAG }}
+          ${{ secrets.DOCKER_USERNAME }}/${{ inputs.SERVICE_NAME }}:${{ needs.prepare-git-tag.outputs.git-tag }}
           ${{ secrets.DOCKER_USERNAME }}/${{ inputs.SERVICE_NAME }}:latest
   
   update-desired-state:
