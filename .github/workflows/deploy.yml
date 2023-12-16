@@ -22,7 +22,7 @@ jobs:
         git config user.email github-actions@github.com
         export tag=$(npm version minor)
         echo "tag=$tag" >> $GITHUB_OUTPUT
-        git commit -m "version bump to $tag"
+        git push
     outputs:
       tag: ${{steps.version-minor.outputs.tag}}
 
