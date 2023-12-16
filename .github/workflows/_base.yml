@@ -19,6 +19,14 @@ on:
         type: string
         required: false
         default: infrastructure/Dockerfile
+      COMPOSEFILE:
+        type: string
+        required: false
+        default: infrastructure/docker-compose.yml
+      DEPLOYMENTFILE:
+        type: string
+        required: false
+        default: infrastructure/k8s/workloads/deployment/app-deployment.yml
       SERVICE_NAME:
         type: string
         required: false
@@ -100,7 +108,36 @@ jobs:
   update-desired-state:
     if: ${{inputs.UPDATE_DESIRED_STATE == true}}
     runs-on: ubuntu-latest
-    needs: [publish-image]
+    needs: [publish-image, prepare-git-tag]
+    env:
+      image: ${{secrets.DOCKER_USERNAME}}/${{inputs.SERVICE_NAME}}:${{ needs.prepare-git-tag.outputs.git-tag }}
     
+    # we need to update docker-compose.yml and app-deployment.yml
     steps:
-    - run: echo 'WIP'
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Update docker-compose.yml
+      uses: fjogeleit/yaml-update-action@v0.13.2
+      with:
+        valueFile: ${{inputs.COMPOSEFILE}}
+        propertyPath: 'services.knex-koa-app.image'
+        value: ${{env.image}}
+        commitChange: false
+
+    - name: Update k8s app-deployment.yml
+      uses: fjogeleit/yaml-update-action@v0.13.2
+      with:
+        valueFile: ${{inputs.DEPLOYMENTFILE}}
+        propertyPath: 'spec.template.spec.containers[0].image'
+        value: ${{env.image}}
+        commitChange: false
+    
+    - name: Commit desired state
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "manifests image bump to ${{env.image}}"
+        git push
+        
