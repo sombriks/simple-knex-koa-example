@@ -32,6 +32,8 @@ jobs:
   run-test-deploy:
     needs: [version-bump]
     uses: ./.github/workflows/_base.yml
+    permissions:
+      contents: write
     secrets: inherit
     with:
       PUBLISH: true
