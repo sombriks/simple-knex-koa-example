@@ -111,6 +111,8 @@ jobs:
     needs: [publish-image, prepare-git-tag]
     env:
       image: ${{secrets.DOCKER_USERNAME}}/${{inputs.SERVICE_NAME}}:${{ needs.prepare-git-tag.outputs.git-tag }}
+    permissions:
+      contents: write
     
     # we need to update docker-compose.yml and app-deployment.yml
     steps:
