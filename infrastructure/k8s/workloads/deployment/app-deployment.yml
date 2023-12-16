@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: simple-knex-koa
-          image: sombriks/simple-knex-koa-example:v0.10.0-1de6b5b
+          image: sombriks/simple-knex-koa-example:v0.11.0-ee4e144
           env:
             - name: PORT
               value: '3000'

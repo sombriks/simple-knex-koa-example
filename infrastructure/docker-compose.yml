@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   knex-koa-app:
-    image: sombriks/simple-knex-koa-example:v0.10.0-1de6b5b
+    image: sombriks/simple-knex-koa-example:v0.11.0-ee4e144
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       PG_CONNECTION_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db/${POSTGRES_DB:-books}
