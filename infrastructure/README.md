@@ -27,7 +27,7 @@ See [complete article here](https://sombriks.com/blog/0058-containers-part-4-k8s
 There is some degree of _jazz_ involved in these things. It's up to you to come
 with an idea on how to create those pipelines.
 
-For instance, previous strategy was:
+For instance, previous strategy was do this locally, by hand:
 
 - git commit everything locally
 - run npm version patch (or minor)
@@ -43,3 +43,7 @@ pull-based tool inside a kubernetes cluster to observe the desired state and
 apply it.
 
 Not managing tags by hand anymore.
+
+![argocd-application.png](argocd-application.png)
+
+_WIP, add article link_

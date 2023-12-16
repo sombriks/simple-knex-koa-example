@@ -102,6 +102,18 @@ By using kind as kubernetes runtime, part of this issue is solved and the
 developer can be more confident on how the application will behave inside
 the belly of the beast.
 
+### [The GitHub Actions playground](https://sombriks.com/blog/0061-github-actions-recipes/)
+
+GitHub Actions can be a very handy too to implement continuous Integration,
+Continuous Delivery and Continuous Deployment.
+
+I built some simple, useless yet educational examples so when building more
+complex workflows this material could be consulted.
+
+It was key to build [this good enough example](.github/workflows/_base.yml) of
+deployment workflow base for GitOps pull based solutions combined with
+[ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/).
+
 ## References
 
 - [node](https://nodejs.org)
