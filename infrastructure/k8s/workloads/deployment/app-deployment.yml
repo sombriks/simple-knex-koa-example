@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
         - name: simple-knex-koa
-          image: sombriks/simple-knex-koa-example:v0.2.0
+          image: sombriks/simple-knex-koa-example:v0.11.0-ee4e144
           env:
             - name: PORT
-              value: "3000"
+              value: '3000'
             - name: NODE_ENV
-              value: "production"
+              value: production
             - name: PG_CONNECTION_URL
-              value: "postgres://postgres:postgres@db-service:5432/books"
+              value: postgres://postgres:postgres@db-service:5432/books
           ports:
             - containerPort: 3000
           resources:
             limits:
-              memory: "128Mi"
-              cpu: "1"
+              memory: 128Mi
+              cpu: '1'
