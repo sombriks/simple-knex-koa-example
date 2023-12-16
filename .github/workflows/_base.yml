@@ -1,3 +1,16 @@
+#
+# _base.yml
+#
+# Have a base workflow is the current strategy being tested to avoid too long
+# and hard to maintain several workflow files.
+#
+# You have this core file and the others mostly extend it by passing inputs.
+#
+# Feel free to copy and modify it for your own needs. Check these examples if
+# in need of any: https://github.com/sombriks/gh-actions-playground
+#
+# @author Leonardo Silveira <sombriks@gmail.com>, MIT License
+#
 name: Base Ops
 
 on:
