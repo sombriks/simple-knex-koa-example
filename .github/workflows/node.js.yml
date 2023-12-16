@@ -8,3 +8,5 @@ jobs:
   run-test:
     uses: ./.github/workflows/_base.yml
     secrets: inherit
+    permissions:
+      contents: write
