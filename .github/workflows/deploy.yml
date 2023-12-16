@@ -5,7 +5,21 @@ on:
     branches: [ "main" ]
 
 jobs:
-  run-test:
+  version-bump:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: |
+        npm version minor
+        
+
+  run-test-deploy:
     uses: ./.github/workflows/_base.yml
     secrets: inherit
     with:
