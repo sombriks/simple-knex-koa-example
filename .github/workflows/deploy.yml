@@ -24,6 +24,7 @@ jobs:
         git config user.email github-actions@github.com
         export tag=$(npm version minor)
         echo "tag=$tag" >> $GITHUB_OUTPUT
+        git push origin $tag
         git push
     outputs:
       tag: ${{steps.version-minor.outputs.tag}}
